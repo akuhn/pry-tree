@@ -13,7 +13,7 @@ module PryTree
     out.print "\e[0m"
     if Class === mod && mod.superclass != Object
       out.print ' < '
-      out.print mod.superclass.name.split('::').last
+      out.print mod.superclass.name.split('::').last rescue nil
     end
     out.puts ""
 
@@ -27,7 +27,7 @@ module PryTree
       private_methods.delete(:initialize)
       class_methods << :new
     end
-    methods = methods.flat_map { |prefix, names| names.map { |name| "#{prefix}#{name}" }}
+    methods = methods.flat_map { |prefix, names| names.map { |name| "#{prefix}#{name}\e[0m" }}
     methods = methods.sort_by { |name| Pry::Helpers::Text.strip_color(name) }
 
     unless methods.empty?
@@ -38,7 +38,11 @@ module PryTree
       Module === child && child < Exception
     }
     [*exceptions, *constants].each do |name|
-      PryTree.call(out, mod.const_get(name), seen, indent + 2)
+      begin
+        PryTree.call(out, mod.const_get(name), seen, indent + 2)
+      rescue NameError
+        next
+      end
     end
   end
 
