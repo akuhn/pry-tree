@@ -6,6 +6,6 @@ describe PryTree do
   end
 
   it 'does something useful' do
-    expect(false).to eq(true)
+    expect(pry_eval('tree Pry')).to match /Pry.*Command.*History.*REPL.*Terminal/m
   end
 end
