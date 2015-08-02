@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Prytree do
+describe PryTree do
   it 'has a version number' do
-    expect(Prytree::VERSION).not_to be nil
+    expect(PryTree::VERSION).not_to be nil
   end
 
   it 'does something useful' do

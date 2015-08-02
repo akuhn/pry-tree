@@ -1,13 +1,13 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'prytree/version'
+require 'pry-tree/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "prytree"
-  spec.version       = Prytree::VERSION
+  spec.name          = "pry-tree"
+  spec.version       = PryTree::VERSION
   spec.authors       = ["Adrian Kuhn"]
-  spec.email         = ["adrian.kuhn@airbnb.com"]
+  spec.email         = ["akuhn@iam.unibe.ch"]
 
   spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
   spec.description   = %q{TODO: Write a longer description or delete this line.}
